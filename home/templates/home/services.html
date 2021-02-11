@@ -1,0 +1,26 @@
+  <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+        <h1 class="entry-title">
+        {{service.title}}
+        </h1>
+         <div>
+                {{service.description|safe}}
+
+              </div>
+
+        </div>
+
+        <div class="row">
+    
+{% for sts in service_image %}
+<div class="col-6 imago" style="height:50vh;background-image:url({{sts.image.url}})">
+
+</div>
+{%endfor%}
+      
+      </div>
+
+      </div>
+      </section>

@@ -1,0 +1,68 @@
+{% extends 'home/homebase.html' %}
+{% load static%}
+{% load hometags %}
+{% load i18n %}
+{% block body %}
+
+  <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Blog</h2>
+          <ol>
+            <li><a href="{% url "home:index" %}">{% trans "Home"%}</a></li>
+            <li>{% trans "Blog"%}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container">
+
+        <div class="row">
+          {% blogtag as blog %}
+          {% for b in blog %}
+          <div class="col-6">
+              <article class="entry" data-aos="fade-up">
+
+                <div class="entry-img">
+                  <img src="{{b.image.url}}" alt="" class="img-fluid">
+                </div>
+
+                <h2 class="entry-title">
+                  <a href={% url 'home:blogdetail' b.id %}>{{b.header|truncatewords:30}}</a>
+                </h2>
+
+              
+
+                <div class="entry-content">
+                  <p>
+                  {{b.description|truncatewords:25 |safe}}
+                  </p>
+                  <div class="read-more">
+                    <a href="{% url 'home:blogdetail' b.id%}">{% trans "Read More"%}</a>
+                  </div>
+                </div>
+              </article>
+          </div>
+          {% endfor %}
+
+           
+        </div><!-- End blog entries list -->
+
+         
+
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Section -->
+
+  </main><!-- End #main -->
+
+
+{% endblock %}

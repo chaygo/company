@@ -1,0 +1,157 @@
+{% load i18n %}
+{% load static %}
+{% load hometags %}
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <div class="carousel-inner" role="listbox">
+     
+
+       
+        {% slidertag as slider %}
+        {% for s in slider %}
+        <div class="carousel-item {% if s.id == 1 %} active {% endif %}" style="background-image: url({{s.image.url}});">
+          <div class="carousel-container">
+            <div class="carousel-content animate__animated animate__fadeInUp">
+              <h2>{{s.header}}</h2>
+              <p>{{s.description}}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      
+        
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon icofont-simple-left" aria-hidden="true"></span>
+        <span class="sr-only">{% trans "Previous"%}</span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon icofont-simple-right" aria-hidden="true"></span>
+        <span class="sr-only">{% trans "Next"%}</span>
+      </a>
+
+      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about-us" class="about-us">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+         <center> <h2>{% trans "About Us" %}</strong></h2> </center>
+        </div>
+{% aboutustag as about %}
+{% for a in about %}
+{% if forloop.first%}
+        <div class="row content">
+          <div class="col-lg-6 imago " data-aos="fade-right" style="background-image: url('{{a.image.url}}');">
+
+         </div>
+          <div class="col-lg-5 offset-1 pt-4 pt-lg-0" data-aos="fade-left">
+            <p class="mr-3">
+             {{a.description|safe}}
+            </p>
+           
+          </div>
+        </div>
+{%endif%}
+{% endfor %}
+      </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= Services Section ======= -->
+    {% servicetag as service %}
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>{% trans "Services"%}</strong></h2>
+           </div>
+
+        <div class="row">
+         {% for s in service %}
+          <div class="col-lg-3 col-md-6  mt-4" data-aos="zoom-in" data-aos-delay="300">
+           <a href="{% url 'home:service' %}"><div class="icon-box iconbox-teal">
+             <img src="{{s.image.url}}" alt="{{s.title}}">
+              <h4 style="color:black">{{s.title}}</h4>
+            </div>
+          </a> </div>
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>{% trans "Portfolio"%}</h2>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up">
+          {% producttag as product %}
+{% for p in product %}
+          <div class="col-lg-4 col-md-6 portfolio-item">
+            <div style="height:50vh; background-image: url({{p.image.url}});" class="imago">
+
+
+            </div>
+           <div class="portfolio-info">
+              <h4>{{p.title}}</h4>
+              <p>{{p.category}}</p>
+              <a href="{{p.image.url}}" data-gall="portfolioGallery" class="venobox preview-link" title="{{p.title}}"><i class="bx bx-plus"></i></a>
+              </div>
+          </div>
+{% endfor %}
+
+
+        </div>
+
+      </div>
+      
+      
+
+
+
+    </section><!-- End Portfolio Section -->
+
+
+      <!-- ======= Our Clients Section ======= -->
+      <section id="clients" class="clients">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-title">
+            <h2>{% trans "Clients"%}</h2>
+          </div>
+  {% clienttag as client %}
+  {% for c in client %}
+          <div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">
+  
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="client-logo " >
+              <img src="{{c.image.url}}" alt="{{c.name}}" class="image-fluid">
+              </div>
+            </div>
+  {% endfor %}
+  
+          </div>
+  
+        </div>
+      </section><!-- End Our Clients Section -->
+  
+   
+
+  </main><!-- End #main -->

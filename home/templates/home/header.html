@@ -1,0 +1,45 @@
+ {% load static %}
+
+ {% load i18n_switcher i18n %}
+ <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="{% url 'home:index' %}"><img src="{% static "assets/img/favicon.png"%}"></a></h1>
+      
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li ><a href="{% url 'home:index' %}">{% trans "Home"%}</a></li>
+
+          <li ><a href="{% url 'aboutus' %}">{% trans "About"%}</a> </li>
+
+          <li><a href="{% url 'home:service' %}">{% trans "Services"%}</a></li>
+          <li><a href="{% url 'home:portfolio' %}">{% trans "Portfolio"%}</a></li>
+          <li><a href="{% url 'home:blog' %}">{% trans "Blog"%}</a></li>
+          <li><a href="{% url 'contact' %}">{% trans "Contact"%}</a></li>
+          
+        <li>
+       <div class="row">
+<div class="col-1">
+          <a href="{{ request|switch_i18n:'tk' }}">
+            <img style="width:16px; margin:0;" src="{% static 'assets/img/lang/tk.png' %}"/>
+          </a> 
+        </div>
+         <div class="col-1">
+          <a href="{{ request|switch_i18n:'en-us' }}">
+            <img style="width:16px; margin:0;" src="{% static 'assets/img/lang/en.png' %}"/>
+          </a> 
+        </div>
+         <div class="col-1">
+          <a href="{{ request|switch_i18n:'ru' }}">
+            <img style="width:16px; margin:0;" src="{% static 'assets/img/lang/ru.png' %}"/>
+          </a> 
+        </div>
+        </div>
+      
+        </li>
+        </ul>
+      </nav>
+    </div>
+  </header><!-- End Header -->

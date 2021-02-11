@@ -1,0 +1,188 @@
+{% extends 'home/homebase.html' %}
+{% load static%}
+{% load hometags %}
+
+{% block title %} Index {% endblock%}
+{% block description %} Index {% endblock%}
+{% block keyboards %} Index {% endblock%}
+
+{% block body %}
+
+{% slidertag as slider %}
+<br><br><br><br><br><br><br>
+{% for s in slider %}
+<h1>{{s.header}}</h1>
+{% endfor %}
+
+{% endblock %}
+
+
+{% extends 'home/homebase.html' %}
+{% load hometags %}
+{% block body %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Services</h2>
+          <ol>
+            <li><a href="{% url 'home:service' %}">Home</a></li>
+            <li>Services</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    
+    
+    <!-- ======= Services Section ======= -->
+    {% servicetag as service %}
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Services</strong></h2>
+          <p>Laborum repudiandae omnis voluptatum consequatur mollitia ea est voluptas ut</p>
+        </div>
+
+        <div class="row mx-auto col-lg-6 col-md-6 col-sm-12">
+         {% for s in service %}
+          <div class="col-lg-4 col-md-4 mt-4 " data-aos="zoom-in" data-aos-delay="300" onclick="myFunction({{s.id}})" style="{% if s.id == 1 %} display:block; {% endif %}">
+            <div class="icon-box iconbox-teal" >
+              <img src="{{s.image.url}}" alt="{{s.title}}">
+                <h4 style="color:black">{{s.title}}</h4>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+{% for s in service %}
+<div class="collapse " id="{{s.id}}">
+          
+ 
+  {% show_service s.id %}
+   
+     
+</div>
+{% endfor %}
+         
+
+ 
+        
+      
+
+      </div>
+    </section><!-- End Services Section -->
+
+
+  </main><!-- End #main -->
+ 
+  <script>
+    function myFunction(san) {
+     {% for service in services %} 
+      var x = document.getElementById({{service.id}});
+      if ({{service.id}}!=san) {
+        x.style.display = "none";
+      } 
+      else{
+        if(x.style.display=="none")
+        {x.style.display="block";}
+        else{
+          x.style.display="none";
+        }
+      }
+      {% endfor %}
+    
+    }
+    
+    
+    
+    </script>
+  
+{% endblock %}
+
+
+
+--------------------------------------------
+filter{% extends 'home/homebase.html' %}
+{% load hometags %}
+{% block body %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Services</h2>
+          <ol>
+            <li><a href="{% url 'home:service' %}">Home</a></li>
+            <li>Services</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    
+    
+    <!-- ======= Services Section ======= -->
+    {% servicetag as service %}
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              
+              {% for s in service %}
+              <li data-filter=".filter-{{s.id}}" >{{s.title}}</li>
+             {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up">
+        {% for s in service %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-{{s.id}}">
+          {% show_service s.id %}
+          </div>
+
+         {% endfor %}
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+
+  </main><!-- End #main -->
+ 
+  <script>
+    function myFunction(san) {
+     {% for service in services %} 
+      var x = document.getElementById({{service.id}});
+      if ({{service.id}}!=san) {
+        x.style.display = "none";
+      } 
+      else{
+        if(x.style.display=="none")
+        {x.style.display="block";}
+        else{
+          x.style.display="none";
+        }
+      }
+      {% endfor %}
+    
+    }
+    
+    
+    
+    </script>
+  
+{% endblock %}

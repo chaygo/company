@@ -1,0 +1,54 @@
+{% load i18n %}
+ <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6 footer-contact">
+            <h3>Sahabatly</h3>
+            <div class="row">
+            <div class="col-3">
+            <p >
+             {% trans " Ashgabat"%}<br>
+              G.Kulyyew {% trans "street"%}<br>
+              Begenchli {% trans "office"%}</p>
+            </div>
+            <div class="col-3">
+            <p>
+              <strong>{% trans "Phone"%}:</strong> <br>+99365123456<br>
+              <strong>Email:</strong> <br>info@example.com<br>
+            </p>
+            </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6 footer-links">
+            <h4>{% trans "Useful Links"%}</h4>
+            <div class="row">
+            <div class="col-3">
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url "home:index"%}">{% trans "Home"%}</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url "aboutus"%}">{% trans "About us"%}</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url "home:service"%}">{% trans "Services"%}</a></li>
+            </ul>
+            </div>
+            <div  class="col-3">
+              <ul >
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url "home:index"%}">{% trans "Terms of service"%}</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url "home:index"%}">{% trans "Privacy policy"%}</a></li>
+              </ul>
+             </div> 
+            </div>
+          </div>
+
+         
+
+
+       <p class="text-center">
+          &copy; Copyright <strong><span>{% trans "Sahabatly"%}</span></strong>. {% trans "All Rights Reserved. Designed by"%} <a href="https://sanlygalam.com">Sanly galam</a>
+       </p>    
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
