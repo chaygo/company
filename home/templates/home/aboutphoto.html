@@ -1,0 +1,22 @@
+<!-- ======= About Us Photos Section ======= -->
+ <section id="portfolio" class="portfolio">
+    <div class="container">
+
+     
+      <div class="row portfolio-container" data-aos="fade-up">
+       
+{% for p in photos %}
+<div class="col-lg-4 col-md-6 portfolio-item ">
+    <img src="{{p.image.url}}" class="img-fluid rounded " alt="{{p.title}}">
+    <div class="portfolio-info">
+      <h4>{{p.title}}</h4>
+      <a href="{{p.image.url}}" data-gall="portfolioGallery" class="venobox preview-link" title="{{p.title}}"><i class="bx bx-plus"></i></a>
+      </div>
+  </div>
+{% endfor %}
+
+
+      </div>
+
+    </div>
+  </section>
